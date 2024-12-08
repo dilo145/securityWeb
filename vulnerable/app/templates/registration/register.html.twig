@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="flex justify-center items-center min-h-screen bg-gray-100">
+        <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
+            <h1 class="text-3xl font-bold text-center mb-8">Inscription</h1>
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
+
+            {{ form_row(registrationForm.inscription.nom, {
+                'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+            }) }}
+            {{ form_row(registrationForm.inscription.prenom, {
+                'label': 'Prénom',
+                'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+            }) }}
+            {{ form_row(registrationForm.email, {
+                'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                'label': 'Mot de passe',
+                'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+            }) }}
+            {{ form_row(registrationForm.inscription.telephone, {
+                'label': 'Téléphone',
+                'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+            }) }}
+
+            <div class="flex gap-4">
+                <div class="w-1/2">
+                    {{ form_row(registrationForm.inscription.lycee, {
+                        'label': 'Lycée',
+                        'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+                    }) }}
+                </div>
+                <div class="w-1/2">
+                    {{ form_row(registrationForm.inscription.section, {
+                        'attr': {'class': 'block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                {{ form_widget(registrationForm.agreeTerms, {
+                    'attr': {'class': 'h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded'}
+                }) }}
+                {{ form_label(registrationForm.agreeTerms, null, {
+                    'label': 'Accepter les conditions',
+                    'label_attr': {'class': 'text-sm font-medium text-gray-600'}
+                }) }}
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                S'inscrire
+            </button>
+            {{ form_end(registrationForm) }}
+
+            <div class="text-center mt-4">
+                <a href="{{ path('app_login') }}" class="text-blue-500 hover:underline">Déjà inscrit ? Connectez-vous ici</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

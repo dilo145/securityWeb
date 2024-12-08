@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block body %}
+    <div class="max-w-7xl mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <h1 class="text-2xl font-semibold mb-6 text-center">Erreur</h1>
+        <p class="text-center">Une erreur a été détectée, veuillez contacter le support.</p>
+        <div class="flex justify-center mt-6">
+            <a href="{{ path('homepage') }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white p-2 rounded">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+{% endblock %}

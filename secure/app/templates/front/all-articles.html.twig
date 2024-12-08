@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-extrabold mb-12 text-center text-gray-800">Forum 2024 - Liste des Ateliers</h1>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Ateliers</h2>
+                    <p class="text-sm">Liste de tous les ateliers disponibles</p>
+                    <a class="inline-block mt-4 bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_atelier_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-green-500 to-teal-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Métier</h2>
+                    <p class="text-sm">Liste de tous les métiers disponibles</p>
+                    <a class="inline-block mt-4 bg-white text-green-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_metier_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500 to-pink-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Activités</h2>
+                    <p class="text-sm">Liste de toutes les activités disponibles</p>
+                    <a class="inline-block mt-4 bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_activite_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-orange-500 to-yellow-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Compétences</h2>
+                    <p class="text-sm">Liste de toutes les compétences</p>
+                    <a class="inline-block mt-4 bg-white text-orange-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_competence_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-red-500 to-pink-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Secteurs</h2>
+                    <p class="text-sm">Liste de tous les secteurs</p>
+                    <a class="inline-block mt-4 bg-white text-red-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_secteur_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-gray-500 to-gray-800 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Ressources</h2>
+                    <p class="text-sm">Liste de toutes les ressources disponibles</p>
+                    <a class="inline-block mt-4 bg-white text-gray-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_ressource_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-teal-500 to-blue-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Salles</h2>
+                    <p class="text-sm">Liste de toutes les salles</p>
+                    <a class="inline-block mt-4 bg-white text-teal-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_salle_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-cyan-500 to-green-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Lycéens</h2>
+                    <p class="text-sm">Liste de tous les lycéens</p>
+                    <a class="inline-block mt-4 bg-white text-cyan-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_inscription_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-500 to-purple-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Lycée</h2>
+                    <p class="text-sm">Liste de tous les lycées des lycéens</p>
+                    <a class="inline-block mt-4 bg-white text-indigo-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_lycee_index') }}">Détails</a>
+                </div>
+                <div class="bg-gradient-to-br from-pink-500 to-red-500 text-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
+                    <h2 class="text-xl font-bold mb-4">Sections</h2>
+                    <p class="text-sm">Liste de toutes les sections</p>
+                    <a class="inline-block mt-4 bg-white text-pink-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition-colors" href="{{ path('app_section_index') }}">Détails</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <div>
+            {% if ateliers is not empty %}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {% for atelier in ateliers %}
+                        <div class="bg-white shadow-md rounded-xl overflow-hidden transition-transform hover:scale-105 hover:shadow-lg">
+                            <div class="bg-gradient-to-br from-blue-500 to-cyan-500 h-40 flex items-center justify-center">
+                                <p class="text-2xl font-bold text-white uppercase text-center">{{ atelier.getNom() }}</p>
+                            </div>
+                            <div class="p-6">
+                                <ul class="text-gray-600 text-sm space-y-2 mb-4">
+                                    <li><span class="font-semibold">Date :</span> Du {{ atelier.getDateDebut()|date('d-m-Y') }} au {{ atelier.getDateFin()|date('d-m-Y') }}</li>
+                                    <li><span class="font-semibold">Salle :</span>
+                                        {% for salle in atelier.getSalle() %}
+                                            {{ salle.getNom() }}{% if not loop.last %}, {% endif %}
+                                        {% else %}
+                                            Aucune salle associée
+                                        {% endfor %}
+                                    </li>
+                                    <li><span class="font-semibold">Métier(s) :</span>
+                                        {% for metier in atelier.getMetier() %}
+                                            {{ metier.getNom() }}{% if not loop.last %}, {% endif %}
+                                        {% else %}
+                                            Aucun métier associé
+                                        {% endfor %}
+                                    </li>
+                                    <li><span class="font-semibold">Ressource(s) :</span>
+                                        {% for ressource in atelier.getRessource() %}
+                                            {{ ressource.getType() }}{% if not loop.last %}, {% endif %}
+                                        {% else %}
+                                            Aucune ressource associée
+                                        {% endfor %}
+                                    </li>
+                                    <li><span class="font-semibold">Secteur :</span> {{ atelier.getSecteur() }}</li>
+                                    <li><span class="font-semibold">Intervenant(s) :</span> {{ atelier.getIntervenant() }}</li>
+                                </ul>
+                                <div class="text-center">
+                                    <a href="{{ path('detail-atelier', {'id': atelier.getId()}) }}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                                        Voir les détails
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-gray-500 text-center mt-12">Aucun atelier trouvé.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
